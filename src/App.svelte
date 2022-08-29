@@ -1,45 +1,73 @@
 <script lang="ts">
-  import svelteLogo from "./assets/svelte.svg";
-  import Counter from "./lib/Counter.svelte";
+	let username:string = "JustBarnt";
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<header>
+		<h1>75-Hard Challenge</h1>
+		<p>Welcome, {username}!</p>
+	<nav>
+		<span class="nav-text">
+			<a href="/">Home</a>
+		</span>
+		<span class="nav-text">
+			<a href="/">Login</a>
+		</span>
+		<span class="nav-text">
+			<a href="/">Create Account</a>
+		</span>
+	</nav>
+</header>
+<section>
 
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
+</section>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+	header{
+		color:white;
+		position: fixed;
+		width: var(--headerWidth);
+		display:flex;
+		place-content: space-between;
+		place-items: center;
+		z-index: 10;
+		margin: 0.5% 2.5%;
+		height: 5%;
+		border-radius: 5rem;
+		background: linear-gradient(45deg, var(--headerGrad));
+		box-shadow: 0 0 2rem #574f69b2;
+	}
+
+	nav > span{
+		padding: 0.75rem;
+	}
+
+	nav{
+		font-size: 1.2rem;
+		padding-right: 1.2rem;
+	}
+
+	nav a{
+		color: white;
+		text-decoration: none;
+		font-weight: 600;
+		border-radius: 3rem;
+		border: 0.15rem solid transparent;
+		padding: 0.5rem;
+		transition: border-color 0.5s, background-color 0.5s;
+	}
+
+	nav a:hover, nav a:focus, nav a:focus-visible, nav a:active{
+		border-color: #5B4687;
+		background: linear-gradient(0deg,#6A529E75, #9E525F75);
+	}
+
+	header > h1{
+		font-size: 2.5rem;
+		padding-left: 1.6rem;
+	}
+
+	header > p{
+		font-size: 1.6rem;
+		font-weight: 600;
+	}
 </style>
