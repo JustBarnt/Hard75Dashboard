@@ -1,30 +1,31 @@
 {
-	"extends": "@tsconfig/svelte/tsconfig.json",
-	//"exclude": ["node_modules/*", "public/*"],
-	"include": [
-		"src/**/*.d.ts",
-		"src/**/*.ts",
-		"src/**/*.js",
-		"src/**/*.svelte"
-	],
 	"compilerOptions": {
 		"allowJs": true,
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
-		//"forceConsistentCasingInFileNames": true,
-		//"importHelpers": true,
-		//"lib": ["DOM", "ESNext"],
-		"module": "ESNext",
-		//"noUnusedLocals": true,
-		//"importsNotUsedAsValues": "error",
+		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
+		"module": "ESNext",
+		"noUnusedLocals": false,
+		"preserveValueImports": true,
 		"skipLibCheck": true,
-		//"strict": true,
-		"resolveJsonModule": true,
-		"useDefineForClassFields": true,
+		"sourceMap": true,
+		"strict": false,
 		"target": "ESNext",
+		"useDefineForClassFields": true
 	},
+	"exclude": [
+		"node_modules/*",
+		"public/*"
+	],
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.ts",
+		"src/**/*.js",
+		"src/**/*.svelte",
+		"src/**/*"
+	],
 	"references": [
 		{
 			"path": "./tsconfig.node.json"

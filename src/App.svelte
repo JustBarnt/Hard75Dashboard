@@ -25,7 +25,7 @@
 	header{
 		color:white;
 		position: fixed;
-		width: $headerWidth;
+		width: var(--headerWidth);
 		display:flex;
 		place-content: space-between;
 		place-items: center;
@@ -33,7 +33,7 @@
 		margin: 0.5% 2.5%;
 		height: 5%;
 		border-radius: 5rem;
-		background: linear-gradient(45deg, $headerGrad);
+		background: $primaryColor;
 		box-shadow: 0 0 2rem #574f69b2;
 	}
 
