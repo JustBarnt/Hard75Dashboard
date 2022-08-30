@@ -6,7 +6,7 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:svelte/recommened"
+		"plugin:svelte/recommended"
 	],
 	"overrides": [
 		{
