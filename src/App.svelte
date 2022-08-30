@@ -21,11 +21,11 @@
 
 </section>
 
-<style>
+<style lang="scss">
 	header{
 		color:white;
 		position: fixed;
-		width: var(--headerWidth);
+		width: $headerWidth;
 		display:flex;
 		place-content: space-between;
 		place-items: center;
@@ -33,7 +33,7 @@
 		margin: 0.5% 2.5%;
 		height: 5%;
 		border-radius: 5rem;
-		background: linear-gradient(45deg, var(--headerGrad));
+		background: linear-gradient(45deg, $headerGrad);
 		box-shadow: 0 0 2rem #574f69b2;
 	}
 

@@ -1,18 +1,18 @@
 :root {
-	--headerBG: #ffffff;
-	--maxWidth: 100%;
-	--headerWidth: 95%;
-	--bgGrad: #7157A8, #A85766;
-	--headerGrad: #8D78BA75, #BA788475;
-	--btnHoverColor: #1a1a1a50;
-	
+	$headerBG: #ffffff;
+	$maxWidth: 100%;
+	$headerWidth: 95%;
+	$bgGrad: #7157A8,#A85766;
+	$headerGrad: #8D78BA75,#BA788475;
+	$btnHoverColor: #1a1a1a50;
+
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 10px;
 	line-height: 10px;
 	font-weight: 400;
-	
+
 	color: #ffffff;
-	background: linear-gradient(45deg, var(--bgGrad));
+	background: linear-gradient(45deg, var($bgGrad));
 	max-width: 192.8rem;
 
 	font-synthesis: none;
@@ -22,9 +22,9 @@
 	-webkit-text-size-adjust: 100%;
 }
 
-*{
-	margin:0;
-	padding:0;
+* {
+	margin: 0;
+	padding: 0;
 }
 
 a {
@@ -34,7 +34,7 @@ a {
 }
 
 a:hover {
-  	color: #535bf2;
+	color: #535bf2;
 }
 
 body {
@@ -63,10 +63,12 @@ button {
 	cursor: pointer;
 	transition: border-color 0.25s;
 }
+
 button:hover {
-  	border-color: #646cff;
+	border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
-  	outline: 0.2rem auto #646cff;
+	outline: 0.2rem auto #646cff;
 }
