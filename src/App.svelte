@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Login from "./components/Login.svelte";
+
 	let username:string = "JustBarnt";
 </script>
 
@@ -17,24 +19,28 @@
 		</span>
 	</nav>
 </header>
-<section>
-
-</section>
+<content>
+	<Login/>
+</content>
 
 <style lang="scss">
+
+	content{
+		flex: auto;
+		place-self: center center;
+	}
+
 	header{
-		color:white;
 		position: fixed;
-		width: var(--headerWidth);
-		display:flex;
-		place-content: space-between;
-		place-items: center;
-		z-index: 10;
-		margin: 0.5% 2.5%;
+		width: 100%;
 		height: 5%;
-		border-radius: 5rem;
-		background: $primaryColor;
-		box-shadow: 0 0 2rem #574f69b2;
+		display:flex;
+		place-content: space-between space-between;
+		place-items: center center;
+		z-index: 10;
+		background: $headerBG;
+		background-blend-mode: multiply, multiply;
+		box-shadow: 0 0 2rem #1e1e1e;
 	}
 
 	nav > span{
