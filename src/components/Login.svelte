@@ -2,14 +2,15 @@
 	let accounts: Login = { username: "justbarnt", password: "admin" };
 	let attempt: Login = { username: "", password: "" };
 
-	let isHidden:boolean = true;
-	let attempts:number = 5;
+	let success:boolean | null = null;
+	let message: { success: string, error: string } = { success: "Success! Signing-In!", error: "Invalid username and/or password." };
+	$: hidden = success === null ? "hidden" : ""; 
+	$: visible = success !== null ? "visible" : "";
+	$: alertColor = success ? "#00C9A5" : "#E07F91";
 
 	function HandleLogin(): void 
 	{
-		console.log((attempt.username !== accounts.username && attempt.password !== accounts.password));
-		if(attempt.username !== accounts.username && attempt.password !== accounts.password)
-			isHidden = false;
+		success = ((attempt.username === accounts.username) && (attempt.password === accounts.password));
 	}
 
 	function HandleInput(event): void 
@@ -23,16 +24,14 @@
 	}
 </script>
 
-<main class="login-main">
+<section>
 	<form id="LoginForm" on:submit|preventDefault="{HandleLogin}" autocomplete="off">
 		<h1>Sign In</h1>
-		<error
-			class="{isHidden ? "hidden" : "visible"}">
-			<p class="msg">
-				Invalid username
-				<span class="msg-cont">and/or password.</span>
+		<alert class:hidden class:visible style="background-color:{alertColor}">
+			<p>
+				{success ? message.success : message.error}
 			</p>
-		</error>
+		</alert>
 		<input
 			type="text"
 			name="username"
@@ -50,71 +49,58 @@
 			value="Login"
 			class="submit-login"/>
 	</form>
-</main>
+</section>
 
 <style lang="scss">
 
-	.login-main{
+	section{
+		height: 95%;
 		display: flex;
-		place-content: space-around space-around;
+		justify-content: center;
+		align-items: center;
 	}
 	
-	main form{
-		display: inherit;
+	form{
+		display: flex;
 		flex-flow: column wrap;
+		place-content: center center;
 		color: white;
 		padding: 5rem 5rem;
 		border-radius: 1rem;
-		background: $headerBG;
-		box-shadow: 0 0 0.75rem #00000075;
+		background: linear-gradient(to left, #6E6085, #E07F91);
+
+		h1{
+			font-size: 2.5rem;
+			text-align: center;
+		}
+
+		*{
+			margin: 1rem 0;
+		}
 	}
 
-	main form>*{
-		flex: auto;
-		margin: 0.5rem 0;
-	}
+	alert{
+		&.hidden{
+			@include alert-base;
+			@include alert-hidden;
+		}
 
-	.hidden{
-		border-radius: 1rem;
-		align-self: center;
-		margin: 0 0;
-		padding: 0;
-		font-size: 1.2rem;
-		font-weight: bold;
-		color: #ffffff;
-		background-color: $magenta;
-		box-shadow: 0 0 0.75rem #00000075;
-		opacity: 0;
-		transition: opacity 0.25s;
-	}
-
-	.visible{
-		opacity: 1;
-		align-self: center;
-		border-radius: 1rem;
-		margin: 1rem 0;
-		padding: 1rem;
-		font-size: 1.2rem;
-		font-weight: bold;
-		color: #ffffff;
-		background-color: $magenta;
-		box-shadow: 0 0 0.75rem #00000075;
-		transition: all 0.25s;
+		&.visible{
+			@include alert-base;
+			@include alert-visible;
+		}
 	}
 
 	.login-field {
-		background-color: #30303075;
-		border: 0.2rem solid transparent;
-		border-bottom: 0.2rem solid #ffffff50;
-		border-radius: 0.5rem;
-		padding: 0.5rem 0.15rem;
-		transition: all 0.25s;
+		@include input-base;
+		box-shadow: 0 0 .75rem $purpleDark;
 
-		&:hover, &:active, &:focus{
+		&:active, &:focus{
 			background: #303030;
 			border-color: $magenta;
 			padding: 0.75rem;
 			border-radius: 1rem;
+			outline: none;
 		}
 
 		&::placeholder{
@@ -123,11 +109,7 @@
 	}
 
 	.submit-login {
-		border: 0.2rem solid transparent;
-		background-color: #30303075;
-		padding: 0.5rem 0.5rem;
-		border-radius: 0.5rem;
-		font-weight: bold;
+		@include button-base;
 		cursor: pointer;
 		transition: all 0.25s;
 

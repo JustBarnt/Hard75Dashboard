@@ -16,12 +16,12 @@
 	-webkit-text-size-adjust: 100%;
 }
 
-* {
+*{
 	margin: 0;
 	padding: 0;
 }
 
-a {
+a{
 	font-weight: 500;
 	color: #646cff;
 	text-decoration: inherit;
@@ -31,18 +31,23 @@ a {
 	}
 }
 
-h1 {
-	font-size: 3.2rem;
-	line-height: 2.4rem;
-}
-
 #app {
 	display: flex;
+	flex-flow: column wrap;
 	height: 100vh;
 	width: 100vw;
 	background: $background;
 }
 
-button {
-	@include stdButton;
+button, input[type=select] {
+	@include button-base;
+
+	:hover {
+		border-color: #646cff;
+	}
+
+	:focus,
+	:focus-visible {
+		outline: 0.2rem auto #646cff;
+	}
 }

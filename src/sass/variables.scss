@@ -4,14 +4,7 @@ $purpleDark: darken($purple, 20%);
 
 $magenta: #E07F91;
 
-$pastelPurple: #A293BA;
-$pastelPurpleDark: darken($pastelPurple, 20%);
-
 $green: #00C9A5;
-$mintGreen: #a0ffee;
-
-$btnBG: linear-gradient(to right top, $green, darken($green, 2.5%), darken($green, 5%), darken($green, 10%), darken($green, 15%));
-$btnBGHover: linear-gradient(to right bottom, darken($green, 15%), darken($green, 10%), darken($green, 5%), darken($green, 2.5%), $green);
 
 $btnColor: $green;
 $btnHover: darken($green, 15%);
@@ -23,23 +16,60 @@ $headerBG: linear-gradient(to left, $purple, $magenta);
 $maxWidth: 100%;
 $headerWidth: 95%;
 
-@mixin stdButton {
-	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1.6em;
+@mixin button-base {
+	color: white;
+	border: 0.2rem solid $purpleDark;
+	border-radius: 1rem;
+	padding: 0.75rem 0.75rem;
+	font-size: 1.6rem;
 	font-weight: 500;
 	font-family: inherit;
-	background-color: #1a1a1a;
+	background-color: $purpleDark;
+	box-shadow: 0 0 0.75rem $purpleDark;
 	cursor: pointer;
 	transition: all 0.25s;
+}
 
-	:hover {
-		border-color: #646cff;
-	}
+@mixin input-base{
+	background-color: $purpleDark;
+	padding: 0.75rem;
+	border: 0.2rem solid transparent;
+	border-bottom: 0.2rem solid #ffffff50;
+	border-radius: 0.5rem;
+	transition: all 0.25s;
+}
 
-	:focus,
-	:focus-visible {
-		outline: 0.2rem auto #646cff;
-	}
+@mixin alert-base{
+	border-radius: 1rem;
+	align-self: center;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #ffffff;
+	box-shadow: 0 0 0.75rem #00000075;
+	transition: all 0.25s;
+}
+
+@mixin alert-hidden{
+	margin: 0 0;
+	padding: 0;
+	opacity: 0;
+}
+
+@mixin alert-visible{
+	margin: 1rem 0;
+	padding: 1rem;
+	opacity: 1;
+}
+
+@mixin a-base{
+	color: white;
+	font-weight: 600;
+	border-radius: 1rem;
+	padding: 0.5rem;
+	border: 0.02rem solid transparent;
+	transition: all 0.25s;
+}
+
+@mixin a-hover{
+	border-color: $magenta;
 }
