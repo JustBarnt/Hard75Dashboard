@@ -48,6 +48,7 @@
 			type="submit"
 			value="Login"
 			class="submit-login"/>
+		<p>Create Account</p>
 	</form>
 </section>
 
@@ -58,6 +59,21 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		p{
+			font-size: 1.2rem;
+			text-align: center;
+			border-bottom: 0.2rem solid transparent;
+			padding-bottom: 0.2rem;
+			cursor:pointer;
+			width: fit-content;
+			align-self: center;
+			transition: all 0.25s;
+
+			&:hover{
+				border-bottom: 0.2rem solid white;
+			}
+		}
 	}
 	
 	form{
