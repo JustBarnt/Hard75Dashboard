@@ -1,0 +1,14 @@
+$purple: #6E6085;
+$purpleLight: lighten($purple, 20%);
+$purpleDark: darken($purple, 20%);
+
+$magenta: #E07F91;
+
+$green: #00C9A5;
+
+$btnColor: $green;
+$btnHover: darken($green, 15%);
+$btnText: #C5FCEF;
+
+$background: linear-gradient(to left bottom, #ffffff, lighten($purple, 40%));
+$headerBG: linear-gradient(to left, $purple, $magenta);

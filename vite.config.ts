@@ -1,29 +1,27 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { defineConfig } from "vite";
 import basicSsl from "@vitejs/plugin-basic-ssl";
-import { defineConfig } from 'vite';
+import { svelte } from "@sveltejs/vite-plugin-svelte";
+import sveltePreprocess from "svelte-preprocess";
+import autoprefixer from "autoprefixer";
 
 // https://vitejs.dev/config/
+/**@type {import("vite").UserConfig} */
+
+const production = (process.env.NODE_ENV === "production");
+
 export default defineConfig({
-	plugins: [ svelte(), basicSsl() ],
-	server: {
-		https: true,
-		port: 2112
-	},
-	build: {
-		rollupOptions: {
-			output: {
-				assetFileNames: ( assetInfo: any ): string =>
-				{
-					let extType = assetInfo.name.split(".").at(1);
-					if(/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType))
-					{
-						extType = "img";
-						return `assets/${extType}/[name]-[hash][extname]`;
-					}
-					return `assets/${extType}/[name][extname]`;	
+	plugins: [
+		svelte({
+			preprocess: sveltePreprocess({
+				sourceMap: !production,
+				postcss: {
+					plugins: [ autoprefixer() ],
 				},
-				entryFileNames: "assets/js/bundles.js",
-			}
-		}
-	}
-})
+				scss: {
+					prependData: `@import './src/sass/variables.scss';`
+				}
+			}),
+		}),
+		basicSsl(),
+	]
+});
