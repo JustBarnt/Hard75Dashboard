@@ -1,16 +1,16 @@
 enum EntityMap 
 {
-	"&" = "&amp;",
-	"<" = "&lt;",
-	">" = "&gt;",
-	"\"" = "&quot;",
-	"'" = "&#39;",
-	"/" = "&#x2F;",
-	"`" = "&#x60;",
-	"=" = "&#x3D;"
+		"&" = "&amp;",
+		"<" = "&lt;",
+		">" = "&gt;",
+		"\"" = "&quot;",
+		"'" = "&#39;",
+		"/" = "&#x2F;",
+		"`" = "&#x60;",
+		"=" = "&#x3D;"
 }
 
-class Utils
+export class Utils
 {
 	/**
 	* Replaces a potentially hazardous string with a normal string with no HTML.
@@ -19,7 +19,7 @@ class Utils
 	*/
 	static SanitizeInput(input: string)
 	{
-		return String(string).replace(/[&<>"'`=\/]/g, (s) => 
+		return String(input).replace(/[&<>"'`=\/]/g, (s) => 
 		{
 			return EntityMap[s];
 		});

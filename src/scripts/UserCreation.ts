@@ -1,5 +1,5 @@
-import { Utils } from "./Utilities";
 import { V3 } from "../../node_modules/paseto/types/index";
+import { Utils } from "./Utilities";
 const generateKey = V3.generateKey;
 
 type Token = Promise<{ secretKey: string, publicKey: string }>;
@@ -23,7 +23,7 @@ class CreateUser
 		this.email = Utils.SanitizeInput(email);
 		this.token = generateKey("public", { format: "paserk" });
 
-		SendCreateUserRequest(this.firstName, this.lastName, this.username, this.email, this.token);
+		this.SendCreateUserRequest(this.firstName, this.lastName, this.username, this.email, this.token);
 	}
 
 	private SendCreateUserRequest(firstName:string, lastName:string, username:string, email:string, token:Token )

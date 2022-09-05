@@ -1,8 +1,7 @@
-import preprocess from "svelte-preprocess";
+import sveltePreprocess from "svelte-preprocess";
 
-const config =
-{
-	preprocess: preprocess(
+export default {
+	preprocess: sveltePreprocess(
 		{
 			scss:
 			{
@@ -11,5 +10,3 @@ const config =
 		}
 	)
 };
-
-export default config;
